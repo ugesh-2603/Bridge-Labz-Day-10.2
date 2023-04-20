@@ -1,8 +1,8 @@
 heads=0
 tails=0
-flips=10
+goal=21
 
-for ((i=1; i<=flips; i++)); do
+while [ $heads -lt $goal ] && [ $tails -lt $goal ]; do
   flip=$((RANDOM % 2))
 
   if [ $flip -eq 0 ]; then
@@ -14,3 +14,11 @@ done
 
 echo "Heads: $heads"
 echo "Tails: $tails"
+
+if [ $heads -eq $tails ]; then
+  echo "It's a tie!"
+elif [ $heads -gt $tails ]; then
+  echo "Heads wins by $((heads - tails)) points"
+else
+  echo "Tails wins by $((tails - heads)) points"
+fi
